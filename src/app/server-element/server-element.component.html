@@ -1,11 +1,8 @@
 <div class="panel panel-default">
-  <div class="panel-heading">{{ element.name }}</div>
+  <!-- <div class="panel-heading">{{ element.name }}</div> -->
+  <div class="panel-heading" #heading>{{ name }}</div>
   <div class="panel-body">
-    <p>
-      <strong *ngIf="element.type === 'server'" style="color: red">{{
-        element.content
-      }}</strong>
-      <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
-    </p>
+    <!-- <ng-content> is a hook that tell Angular to insert any HTML content placed between the opening and closing tag for this component (<app-server-element>Content here</app-server-element>) when it is rendered in another template -->
+    <ng-content></ng-content>
   </div>
 </div>

@@ -6,11 +6,27 @@
   <hr />
   <div class="row">
     <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onChangeFirst()">
+        Change First Element
+      </button>
+      <button class="btn btn-danger" (click)="onDestroyFirst()">
+        Destroy First Component
+      </button>
       <!-- renders a ServerElementComponent for each object (serverElement) in the array passed to the serverElements property of this AppComponent; the value of each serverElement object in the array is bound to the element (alias: srvElement) property of the corresponding ServerElementComponent rendered (like passing props in React; assigning a value from the parent component to a property of the child component) -->
       <app-server-element
         *ngFor="let serverElement of serverElements"
         [srvElement]="serverElement"
-      ></app-server-element>
+        [name]="serverElement.name"
+      >
+        <p #contentParagraph>
+          <strong *ngIf="serverElement.type === 'server'" style="color: red">{{
+            serverElement.content
+          }}</strong>
+          <em *ngIf="serverElement.type === 'blueprint'">{{
+            serverElement.content
+          }}</em>
+        </p>
+      </app-server-element>
     </div>
   </div>
 </div>
